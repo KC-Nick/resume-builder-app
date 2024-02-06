@@ -1,7 +1,7 @@
-const { User } = require('../models/User');
+const User = require('../models/User');
 const { signToken, AuthenticationError } = require('../utils/auth')
 
-const resolver = {
+const resolvers = {
     Query: {
         users: async () => {
             return User.find()
@@ -33,14 +33,14 @@ Mutation: {
         }
 
         const token = signToken(user);
-        return ( token, user );
+        return { token, user };
     },
     addResume: async (parent, { userId, resume }, context) => {
         if(context.user) {
             return User.findOneAndUpdate(
                 { _id: userId },
                 {
-                  $addToSet: { resume: resume },  
+                  $push: { resumes: resume },  
                 },
                 {
                   new: true,
@@ -50,11 +50,11 @@ Mutation: {
         }
         throw AuthenticationError;
     },
-    removeResume: async (parent, { resume }, context) => {
+    removeResume: async (parent, { userId, resumeId }, context) => {
         if (context.user) {
             return User.findOneAndUpdate(
-                { _id: context.user._id },
-                { $pull: { resume: resume } },
+                { _id: userId },
+                { $pull: { resumes: { _id: resumeId } } },
                 { new: true }
             );
         }
