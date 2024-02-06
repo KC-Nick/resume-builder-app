@@ -8,10 +8,11 @@ const typeDefs = `
 
   type User {
     _id: ID
-    username: String
+    name: String
     firstLastName: String
     email: String
     password: String
+    resume: [Resume]
   }
 
   type Skills {
