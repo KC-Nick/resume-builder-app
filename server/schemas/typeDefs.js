@@ -91,7 +91,7 @@ const typeDefs = `
     login(email: String!, password: String!): Auth
     addResume(userId: ID!, resume: ResumeInput!): User
     removeResume(userId: ID!, resumeId: ID!): User
-    removeUser: User
+    removeUser(userId: ID!): User
   }
 `;
 
