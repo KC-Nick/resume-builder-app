@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 const EducationSchema = require('./Education');
 const ExperienceSchema = require('./Experience');
-const SkillSchema = require('./Skill');
+const SkillSchema = require('./Skills');
 
 const ResumeSchema = new Schema({
     opener: {
