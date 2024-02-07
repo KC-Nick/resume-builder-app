@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import ResumeInputForm from '../pages/ResumeBuilder';
-import ResumeForm from './ResumeForm';
+import ResumeForm from '../pages/ResumeForm';
 
 const ResumeApp = ({ userId }) => {
     console.log(userId);
@@ -24,10 +24,16 @@ const ResumeApp = ({ userId }) => {
   };
 
   return (
-    <div>
-      < ResumeInputForm resume={resume} setResume={setResume} onSubmit={onSubmit} />
-      < ResumeForm resume={resume} setResume={setResume} />
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/create">
+          <ResumeInputForm resume={resume} setResume={setResume} onSubmit={onSubmit} />
+        </Route>
+        <Route path="/generate">
+          <ResumeForm resume={resume} setResume={setResume} />
+        </Route>
+      </Switch>
+    </Router>
   );
 };
 

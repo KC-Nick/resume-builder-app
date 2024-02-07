@@ -1,11 +1,13 @@
 import React from 'react';
 import { useMutation } from '@apollo/client';
-import { ADD_RESUME } from './utils/mutations';
+import { ADD_RESUME } from '../utils/mutations';
 import ResumeInputForm from './ResumeBuilder';
 import { PDFDownloadLink, Document, Page, Text } from '@react-pdf/renderer';
 import { Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 const ResumeForm = ({ resume, setResume }) => {
+    const navigate = useNavigate();
     const [addResume, { error }] = useMutation(ADD_RESUME);
 
     const handleSubmit = async (event) => {
@@ -28,6 +30,7 @@ const ResumeForm = ({ resume, setResume }) => {
             });
 
             setResume(data.addResume);
+           navigate(`/resume/${data.addResume._id}`);
         } catch (error) {
             console.error('Error adding resume:', error);
         }

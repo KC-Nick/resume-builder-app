@@ -24,6 +24,8 @@ const typeDefs = `
   type Resume {
     _id: ID!
     user: User
+    email: String
+    phone: String
     opener: String
     skill: [Skills]
     experience: [Experience]

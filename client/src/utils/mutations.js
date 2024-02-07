@@ -31,10 +31,12 @@ export const ADD_RESUME = gql`
     addResume(userId: $userId, resume: $resume) {
       _id
       name
+      email
+      phone
       resumes {
         _id
         opener
-        skill
+        skills
         experience
         education
       }
