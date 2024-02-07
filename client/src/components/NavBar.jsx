@@ -6,7 +6,7 @@ export default function NavBar({ currentPage, handlePageChange }) {
         <div className='nav-item'>
             <a href='/' 
             onClick={() => handlePageChange('Home')}
-            className={currentPage === 'Home' ? 'nav-link active' : 'nav-link'}>About Me</a>
+            className={currentPage === 'Home' ? 'nav-link active' : 'nav-link'}>Home</a>
         </div>
     </div>
   )
