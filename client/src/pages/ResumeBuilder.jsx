@@ -13,6 +13,7 @@ function ResumeInputForm() {
     console.log(resume);
   };
 
+
   const Signup = Signup.email;
 
   return (
