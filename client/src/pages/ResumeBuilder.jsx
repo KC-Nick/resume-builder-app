@@ -22,4 +22,4 @@ function ResumeInputForm() {
     </form>
   );
 }
-export default UserInput;
+export default ResumeBuilder;
