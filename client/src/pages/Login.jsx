@@ -23,16 +23,21 @@ const Login = (props) => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
+    //authenticating login
     try {
       const { data } = await login({
         variables: { ...formState },
       });
-
+      console.log("30", Auth.login);
       Auth.login(data.login.token);
     } catch (e) {
       console.error(e);
     }
     
+    //redirects after login
+    window.location.assign('/home');
+
+    //resets formstate
     setFormState({
       email: '',
       password: '',
@@ -48,7 +53,7 @@ const Login = (props) => {
             {data ? (
               <p>
                 You are now logged in!{' '}
-                <Link to="/">Home</Link>
+                <Link to="/home">Home</Link>
               </p>
             ) : (
               <Form onSubmit={handleFormSubmit}>
@@ -70,7 +75,7 @@ const Login = (props) => {
                     onChange={handleChange}
                   />
                 </Form.Group>
-                <Button variant="primary" type="submit" block>
+                <Button variant="primary" type="submit">
                   Submit
                 </Button>
               </Form>

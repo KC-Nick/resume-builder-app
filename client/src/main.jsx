@@ -7,8 +7,8 @@ import App from './App';
 function MainRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="*" element={<h1 className='display-2'>Wrong page!</h1>} />
+      <Route path="*" element={<App />} />
+      <Route path="/*" element={<h1 className='display-2'>Wrong page!</h1>} />
     </Routes>
   );
 }

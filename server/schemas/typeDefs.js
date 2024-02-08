@@ -89,7 +89,7 @@ const typeDefs = `
   }
   
   type Mutation {
-    addUser(name: String!, email: String!, password: String!): Auth
+    addUser(name: String!, email: String!, firstLastName: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addResume(userId: ID!, resume: ResumeInput!): User
     removeResume(userId: ID!, resumeId: ID!): User

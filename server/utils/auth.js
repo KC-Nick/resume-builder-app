@@ -1,9 +1,11 @@
+require('dotenv').config();
 const { GraphQLError } = require('graphql');
 const jwt = require('jsonwebtoken');
-require('dotenv').config();
 
 const secret = process.env.DB_TOK;
 const expiration = '2h';
+
+console.log("8", secret);
 
 module.exports = {
   AuthenticationError: new GraphQLError('Could not authenticate user.', {
@@ -31,8 +33,8 @@ module.exports = {
 
     return req;
   },
-  signToken: function ({ email, username, _id }) {
-    const payload = { email, username, _id };
+  signToken: function ({ email, username, firstLastName, _id }) {
+    const payload = { email, username, firstLastName, _id };
     return jwt.sign({ authenticatedPerson: payload }, secret, { expiresIn: expiration });
   },
 };

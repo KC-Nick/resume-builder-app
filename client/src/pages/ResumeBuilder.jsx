@@ -17,6 +17,10 @@ const ResumeInputForm = ({ resume, setResume, onSubmit }) => {
     });
   };
 
+  const handleCancelClick = () => {
+    navigate('/home');
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(resume);
@@ -206,6 +210,9 @@ const ResumeInputForm = ({ resume, setResume, onSubmit }) => {
 
         <Button variant="primary" type="submit">
           Submit
+        </Button>
+        <Button variant="danger" type="button" onClick={handleCancelClick}>
+          Cancel
         </Button>
       </Form>
     </>

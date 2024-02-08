@@ -24,16 +24,10 @@ const ResumeApp = ({ userId }) => {
   };
 
   return (
-    <Router>
-      <Switch>
-        <Route path="/create">
-          <ResumeInputForm resume={resume} setResume={setResume} onSubmit={onSubmit} />
-        </Route>
-        <Route path="/generate">
-          <ResumeForm resume={resume} setResume={setResume} />
-        </Route>
-      </Switch>
-    </Router>
+    <>
+      <ResumeInputForm resume={resume} setResume={setResume} onSubmit={onSubmit} />
+      <ResumeForm resume={resume} setResume={setResume} />
+    </>
   );
 };
 
