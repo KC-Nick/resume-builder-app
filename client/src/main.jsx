@@ -1,22 +1,21 @@
-import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-import App from './App.jsx'
+import App from './App';
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <App />,
-    errorElement: <h1 className='display-2'>Wrong page!</h1>,
-    children: [
-      {
-        
-      }
-    ]
-  }
-])
+function MainRoutes() {
+  return (
+    <Routes>
+      <Route path="/" element={<App />} />
+      <Route path="*" element={<h1 className='display-2'>Wrong page!</h1>} />
+    </Routes>
+  );
+}
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router} />
-)
+ReactDOM.render(
+  <Router>
+    <MainRoutes />
+  </Router>,
+  document.getElementById('root')
+);

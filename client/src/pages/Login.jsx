@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Container, Row, Col, Card, Form, Button, Alert } from 'react-bootstrap';
 
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
@@ -39,53 +40,51 @@ const Login = (props) => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Login</h4>
-          <div className="card-body">
+    <Container className="d-flex justify-content-center mb-4">
+      <Col xs={12} lg={10}>
+        <Card>
+          <Card.Header className="bg-dark text-light p-2">Login</Card.Header>
+          <Card.Body>
             {data ? (
               <p>
                 You are now logged in!{' '}
-                <Link to="/">Profile</Link>
+                <Link to="/">Home</Link>
               </p>
             ) : (
-              <form onSubmit={handleFormSubmit}>
-                <input
-                  className="form-input"
-                  placeholder="Your email"
-                  name="email"
-                  type="email"
-                  value={formState.email}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="******"
-                  name="password"
-                  type="password"
-                  value={formState.password}
-                  onChange={handleChange}
-                />
-                <button
-                  className="btn btn-block btn-primary"
-                  style={{ cursor: 'pointer' }}
-                  type="submit"
-                >
+              <Form onSubmit={handleFormSubmit}>
+                <Form.Group controlId="formEmail">
+                  <Form.Control
+                    type="email"
+                    placeholder="Your email"
+                    name="email"
+                    value={formState.email}
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+                <Form.Group controlId="formPassword">
+                  <Form.Control
+                    type="password"
+                    placeholder="******"
+                    name="password"
+                    value={formState.password}
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+                <Button variant="primary" type="submit" block>
                   Submit
-                </button>
-              </form>
+                </Button>
+              </Form>
             )}
 
             {error && (
-              <div className="my-3 p-3 bg-danger text-white">
+              <Alert variant="danger" className="my-3 p-3">
                 {error.message}
-              </div>
+              </Alert>
             )}
-          </div>
-        </div>
-      </div>
-    </main>
+          </Card.Body>
+        </Card>
+      </Col>
+    </Container>
   );
 };
 
