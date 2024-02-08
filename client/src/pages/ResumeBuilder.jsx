@@ -46,6 +46,7 @@ const ResumeInputForm = ({ resume, setResume, onSubmit }) => {
     const updatedExperiences = [...resume.experience];
     updatedExperiences[index][e.target.name] = e.target.value;
     setResume({ ...resume, experience: updatedExperiences });
+
   };
 
   const addExperience = () => {
