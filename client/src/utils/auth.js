@@ -12,18 +12,18 @@ class AuthService {
   }
 
   getToken() {
-    return localStorage.getItem('id_token');
+    return localStorage.getItem('token');
   }
 
   login(idToken) {
     // saves user token to localStorage then reloads the application to log in
-    localStorage.setItem('id_token', idToken);
+    localStorage.setItem('token', idToken);
     window.location.assign('/');
   }
 
   logout() {
     // clear user token and data
-    localStorage.removeItem('id_token');
+    localStorage.removeItem('token');
     window.location.reload();
   }
 }

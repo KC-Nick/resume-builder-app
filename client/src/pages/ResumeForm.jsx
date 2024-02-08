@@ -30,12 +30,15 @@ const ResumeForm = ({ resume, setResume }) => {
             });
 
             setResume(data.addResume);
-           navigate(`/resume/${data.addResume._id}`);
+            navigate(`/resume/${data.addResume._id}`);
         } catch (error) {
             console.error('Error adding resume:', error);
         }
     };
 
+    const handleCancelClick = () => {
+        navigate('/home');
+    };
     return (
         <div>
             <form onSubmit={handleSubmit}>
@@ -76,6 +79,9 @@ const ResumeForm = ({ resume, setResume }) => {
                     }
                 </PDFDownloadLink>
             )}
+            <Button variant="danger" type="button" onClick={handleCancelClick}>
+                Cancel
+            </Button>
         </div>
     );
 };

@@ -10,6 +10,7 @@ const Signup = () => {
   const [formState, setFormState] = useState({
     name: '',
     email: '',
+    firstLastName: '',
     password: '',
   });
   const [addUser, { error, data }] = useMutation(ADD_USER);
@@ -25,7 +26,7 @@ const Signup = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
+    console.log("29", formState);
 
     try {
       const { data } = await addUser({
@@ -36,6 +37,15 @@ const Signup = () => {
     } catch (e) {
       console.error(e);
     }
+        
+    //redirects after login
+    window.location.assign('/home');
+
+    //resets formstate
+    setFormState({
+      email: '',
+      password: '',
+    });
   };
 
   return (
@@ -47,16 +57,25 @@ const Signup = () => {
             {data ? (
               <p>
                 Signup Successful!{' '}
-                <Link to="/">Home</Link>
+                <Link to="/home">Home</Link>
               </p>
             ) : (
               <Form onSubmit={handleFormSubmit}>
                 <Form.Group controlId="formName">
                   <Form.Control
                     type="text"
-                    placeholder="Your name"
+                    placeholder="Your username"
                     name="name"
                     value={formState.name}
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+                <Form.Group controlId="formFirstLastName">
+                  <Form.Control
+                    type="text"
+                    placeholder="Your First and Last Name"
+                    name="firstLastName"
+                    value={formState.firstLastName}
                     onChange={handleChange}
                   />
                 </Form.Group>
@@ -78,7 +97,7 @@ const Signup = () => {
                     onChange={handleChange}
                   />
                 </Form.Group>
-                <Button variant="primary" type="submit" block>
+                <Button variant="primary" type="submit">
                   Submit
                 </Button>
               </Form>
