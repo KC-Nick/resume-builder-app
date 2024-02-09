@@ -13,7 +13,7 @@ const LandingPage = () => {
   //checks if logged in and redirects if so
   useEffect(() => {
     if (!loggedIn) {
-      navigate('/login');
+      navigate('/');
     }
   }, [loggedIn, navigate]);
 
