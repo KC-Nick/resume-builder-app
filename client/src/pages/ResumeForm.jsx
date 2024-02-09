@@ -3,7 +3,6 @@ import { useMutation } from '@apollo/client';
 import { ADD_RESUME } from '../utils/mutations';
 import ResumeInputForm from './ResumeBuilder';
 import { PDFDownloadLink, Document, Page, Text } from '@react-pdf/renderer';
-import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 const ResumeForm = ({ resume, setResume }) => {
@@ -36,15 +35,9 @@ const ResumeForm = ({ resume, setResume }) => {
         }
     };
 
-    const handleCancelClick = () => {
-        navigate('/home');
-    };
     return (
         <div>
-            <form onSubmit={handleSubmit}>
                 <ResumeInputForm resume={resume} setResume={setResume} onSubmit={handleSubmit} />
-                <Button variant="primary" type="submit">Submit</Button>
-            </form>
 
             {resume && (
                 <PDFDownloadLink
@@ -79,9 +72,6 @@ const ResumeForm = ({ resume, setResume }) => {
                     }
                 </PDFDownloadLink>
             )}
-            <Button variant="danger" type="button" onClick={handleCancelClick}>
-                Cancel
-            </Button>
         </div>
     );
 };

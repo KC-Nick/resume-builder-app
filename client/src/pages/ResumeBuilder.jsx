@@ -212,7 +212,7 @@ const ResumeInputForm = ({ resume, setResume, onSubmit }) => {
           Submit
         </Button>
         <Button variant="danger" type="button" onClick={handleCancelClick}>
-          Cancel
+          Cancel Form Input
         </Button>
       </Form>
     </>
