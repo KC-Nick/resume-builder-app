@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react'; // Make sure to import useState
 import { useMutation } from '@apollo/client';
 import { ADD_RESUME } from '../utils/mutations';
 import ResumeInputForm from './ResumeBuilder';
 import { PDFDownloadLink, Document, Page, Text } from '@react-pdf/renderer';
-import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 const ResumeForm = ({ resume, setResume }) => {
     const navigate = useNavigate();
     const [addResume, { error }] = useMutation(ADD_RESUME);
+    const [isSubmitted, setIsSubmitted] = useState(true); // Initialize to true
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        //sets true to false to prevent multiple submissions
+        setIsSubmitted(false);
 
         try {
             const { data } = await addResume({
@@ -31,20 +33,16 @@ const ResumeForm = ({ resume, setResume }) => {
 
             setResume(data.addResume);
             navigate(`/resume/${data.addResume._id}`);
+            setIsSubmitted(true);
         } catch (error) {
             console.error('Error adding resume:', error);
+            setIsSubmitted(true);
         }
     };
 
-    const handleCancelClick = () => {
-        navigate('/home');
-    };
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <ResumeInputForm resume={resume} setResume={setResume} onSubmit={handleSubmit} />
-                <Button variant="primary" type="submit">Submit</Button>
-            </form>
+            {isSubmitted && <ResumeInputForm resume={resume} setResume={setResume} onSubmit={handleSubmit} />}
 
             {resume && (
                 <PDFDownloadLink
@@ -79,9 +77,6 @@ const ResumeForm = ({ resume, setResume }) => {
                     }
                 </PDFDownloadLink>
             )}
-            <Button variant="danger" type="button" onClick={handleCancelClick}>
-                Cancel
-            </Button>
         </div>
     );
 };
