@@ -39,7 +39,6 @@ const ResumeForm = ({ resume, setResume }) => {
     const handleCancelClick = () => {
         navigate('/home');
     };
-    
     return (
         <div>
             <form onSubmit={handleSubmit}>
