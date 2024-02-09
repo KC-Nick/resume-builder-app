@@ -33,7 +33,6 @@ const ResumeApp = ({ userId }) => {
 
   return (
     <>
-      <ResumeInputForm resume={resume} setResume={setResume} onSubmit={onSubmit} />
       <ResumeForm resume={resume} setResume={setResume} />
       <Button variant="danger" type="button" onClick={handleCancelClick}>
         Cancel
