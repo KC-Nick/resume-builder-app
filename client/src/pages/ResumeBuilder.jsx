@@ -95,8 +95,7 @@ const ResumeInputForm = ({ resume, setResume, onSubmit }) => {
 
         <Form.Group controlId="phone">
           <Form.Label>Phone</Form.Label>
-          <Form.Control type="text" placeholder="Enter your phone number" name="phone" value={phone} onChange={handlePhoneChange} />
-        </Form.Group>
+          <Form.Control type="text" placeholder="Enter your phone number" name="phone" value={resume.phone} onChange={handlePhoneChange} />        </Form.Group>
 
         <Form.Group controlId="opener">
           <Form.Label>Opening statement</Form.Label>
