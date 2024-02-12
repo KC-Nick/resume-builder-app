@@ -1,16 +1,41 @@
-import React from 'react';
-import {NavBar, Nav } from 'react-bootstrap';
-import Home from '../pages/Home';
-import Login from '../pages/Login';
-
-export default function NavBar({ currentPage, handlePageChange }) {
-  return (
-    <NavBar className='nav nav-tabs'>
-        <div className='nav-item'>
-            <a href='/' 
-            onClick={() => handlePageChange('Home')}
-            className={currentPage === 'Home' ? 'nav-link active' : 'nav-link'}>Home</a>
-        </div>
-    </NavBar>
-  )
+import React from "react";
+import {
+    Nav,
+    NavLink,
+    Bars,
+    NavMenu,
+    NavBtn,
+    NavBtnLink,
+} from "./NavbarElements";
+ 
+const Navbar = () => {
+    return (
+        <>
+            <Nav>
+                <Bars />
+ 
+                <NavMenu>
+                    <NavLink to="/home" >
+                        Home
+                    </NavLink>
+                    <NavLink to="/resume" activeStyle>
+                        Build Resume
+                    </NavLink>
+                    <NavLink to="/resume" activeStyle>
+                        View Resumes
+                    </NavLink>
+                    <NavLink to="/signup" activeStyle>
+                        Sign Up
+                    </NavLink>
+                </NavMenu>
+                <NavBtn>
+                    <NavBtnLink to="/login">
+                        Sign In
+                    </NavBtnLink>
+                </NavBtn>
+            </Nav>
+        </>
+    );
 };
+ 
+export default Navbar;
