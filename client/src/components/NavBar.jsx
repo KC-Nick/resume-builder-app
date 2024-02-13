@@ -12,11 +12,11 @@ const NavBar = () => {
     return (
       <>
       <div className='navbar-container'>
-        <Navbar bg='dark' variant='dark' expand='lg'>
+        <Navbar bg='dark' variant='dark' expand='lg' className="justify-content-center">
           <Container fluid>
             <Navbar.Toggle aria-controls='navbar' />
             <Navbar.Collapse id='navbar' className='d-flex flex-row-reverse'>
-              <Nav className='ml-auto d-flex'>
+              <Nav className='m-auto justify-content-center'>
                 {Auth.loggedIn() ? (
                   <>
                     <Nav.Link as={Link} to='/home'>
