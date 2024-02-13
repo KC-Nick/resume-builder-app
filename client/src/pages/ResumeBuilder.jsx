@@ -81,6 +81,7 @@ const ResumeInputForm = ({ resume, setResume, onSubmit }) => {
 
   return (
     <>
+    <div className='resume-template'>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="resume">
           <Form.Label>Resume:</Form.Label>
@@ -290,6 +291,7 @@ const ResumeInputForm = ({ resume, setResume, onSubmit }) => {
           Cancel Form Input
         </Button>
       </Form>
+    </div>
     </>
   );
 }

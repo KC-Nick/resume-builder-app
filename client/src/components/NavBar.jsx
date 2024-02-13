@@ -11,6 +11,7 @@ const NavBar = () => {
   
     return (
       <>
+      <div className='navbar-container'>
         <Navbar bg='dark' variant='dark' expand='lg'>
           <Container fluid>
             <Navbar.Toggle aria-controls='navbar' />
@@ -63,6 +64,7 @@ const NavBar = () => {
             </Modal.Body>
           </Tab.Container>
         </Modal>
+        </div>
       </>
     );
   };

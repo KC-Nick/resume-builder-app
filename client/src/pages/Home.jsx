@@ -3,6 +3,7 @@ import { Button, Container } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import ResumeApp from '../components/ResumeApp';
 import Auth from '../utils/auth';
+import './resumeBuilder.css'
 
 const HomePage = ({ userId }) => {
   let navigate = useNavigate();
@@ -37,7 +38,7 @@ const HomePage = ({ userId }) => {
         <ResumeApp userId={userId} />
       ) : (
         <>
-          <Button variant="primary" onClick={handleCreateResumeClick}>Create a Resume</Button>
+          <Button className="create-btn" variant="primary" onClick={handleCreateResumeClick}>Create a Resume</Button>
           <Button variant="secondary" onClick={handleViewResumesClick}>View Resumes</Button>
           <Button variant="danger" onClick={handleLogoutClick}>Logout</Button>
         </>
