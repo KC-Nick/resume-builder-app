@@ -7,10 +7,18 @@ const resolvers = {
             return User.find()
         },
 
-        user: async (parent, { _id }) => {
-            return User.findOne({ _id: _id })
-        }
-    },
+        user: async (parent, args, context) => {
+            if (context.user) {
+              const userData = await User.findOne({ _id: context.user._id })
+                .select('-__v -password')
+                .populate('resumes');
+        
+              return userData;
+            }
+        
+            throw new AuthenticationError('Not logged in');
+          },
+        },
 
     Mutation: {
         addUser: async (parent, { name, email, firstLastName, password }) => {
@@ -36,27 +44,23 @@ const resolvers = {
             return { token, user };
         },
         addResume: async (parent, { userId, resume }, context) => {
-
-            // try{
             if (context.user) {
-                var newResume = User.findOneAndUpdate(
-                    { _id: context.user._id },
-                    { resumes: { ...resume, userId: context.user._id } },
-                    {
-                        new: true,
-                        runValidators: true,
-                    }
-                );
-                throw new Error("addResume", newResume, context.user._id);
-                // throw new Error("newResume", newResume);
-                return newResume;
-                // }} catch (err) {
-                //     console.log(err);
+              var newResume = await User.findOneAndUpdate(
+                { _id: context.user._id },
+                { $set: { 'resumes.$': resume } },
+                {
+                  new: true,
+                  runValidators: true,
+                }
+              );
+          
+              return newResume;
             } else {
-                throw new Error("User not on context");
+              throw new Error("User not on context");
             }
+          },
             // throw AuthenticationError;
-        },
+        // },
         removeResume: async (parent, { userId, resumeId }, context) => {
             if (context.user) {
                 return User.findOneAndUpdate(
