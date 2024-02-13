@@ -34,12 +34,14 @@ const Signup = () => {
       });
 
       Auth.login(data.addUser.token);
+      if (data) {
+        window.location.assign('/home');
+      }
     } catch (e) {
+      alert("Sign up failed")
+      window.location.assign('/');
       console.error(e);
     }
-        
-    //redirects after login
-    window.location.assign('/home');
 
     //resets formstate
     setFormState({

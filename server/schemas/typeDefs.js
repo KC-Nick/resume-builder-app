@@ -11,7 +11,7 @@ const typeDefs = `
     name: String
     firstLastName: String
     email: String
-    password: String
+    phone: String
     resumes: [Resume]
   }
 
@@ -22,12 +22,12 @@ const typeDefs = `
   }
 
   type Resume {
-    _id: ID!
-    user: User
+    _id: ID
+    userId: ID
     email: String
     phone: String
     opener: String
-    skill: [Skills]
+    skills: [Skills]
     experience: [Experience]
     education: [Education]
   }
@@ -36,6 +36,7 @@ const typeDefs = `
     _id: ID!
     jobTitle: String
     company: String
+    position: String
     startDate: String
     endDate: String
     jobDescription: String
@@ -58,11 +59,14 @@ const typeDefs = `
   type Query {
     users: [User]
     user(userId: ID!): User
-
   }
+
   input ResumeInput {
+    name: String
+    email: String
+    phone: String
     opener: String
-    skill: [SkillsInput]
+    skills: [SkillsInput]
     experience: [ExperienceInput]
     education: [EducationInput]
   }
@@ -75,6 +79,7 @@ const typeDefs = `
   input ExperienceInput {
     jobTitle: String
     company: String
+    position: String
     startDate: String
     endDate: String
     jobDescription: String
@@ -91,7 +96,7 @@ const typeDefs = `
   type Mutation {
     addUser(name: String!, email: String!, firstLastName: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addResume(userId: ID!, resume: ResumeInput!): User
+    addResume(resume: ResumeInput!): User
     removeResume(userId: ID!, resumeId: ID!): User
     removeUser(userId: ID!): User
   }

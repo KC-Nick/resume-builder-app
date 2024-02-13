@@ -16,12 +16,15 @@ module.exports = {
   authMiddleware: function ({ req }) {
     let token = req.body.token || req.query.token || req.headers.authorization;
 
+      // throw new Error(req.headers.authorization);
+      
     if (req.headers.authorization) {
       token = token.split(' ').pop().trim();
     }
 
     if (!token) {
-      return req;
+    //   return req;
+      return res.status(400).json({ message: 'You have no token!' });
     }
 
     try {
@@ -31,7 +34,7 @@ module.exports = {
       console.log('Invalid token');
     }
 
-    return req;
+    next();
   },
   signToken: function ({ email, username, firstLastName, _id }) {
     const payload = { email, username, firstLastName, _id };

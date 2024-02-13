@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Container, Row, Col, Card, Form, Button, Alert } from 'react-bootstrap';
 
 import { useMutation } from '@apollo/client';
@@ -8,6 +8,7 @@ import { LOGIN_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 const Login = (props) => {
+  const navigate = useNavigate();
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error, data }] = useMutation(LOGIN_USER);
 
@@ -30,12 +31,14 @@ const Login = (props) => {
       });
       console.log("30", Auth.login);
       Auth.login(data.login.token);
+      if (data) {
+        window.location.assign('/home');
+      }
     } catch (e) {
+      alert("Log in failed")
       console.error(e);
+      window.location.assign('/');
     }
-    
-    //redirects after login
-    window.location.assign('/home');
 
     //resets formstate
     setFormState({

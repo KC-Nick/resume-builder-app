@@ -28,8 +28,8 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_RESUME = gql`
-  mutation addResume($userId: ID!, $resume: ResumeInput!) {
-    addResume(userId: $userId, resume: $resume) {
+  mutation addResume($resume: ResumeInput!) {
+    addResume(resume: $resume) {
       _id
       name
       email
@@ -37,9 +37,25 @@ export const ADD_RESUME = gql`
       resumes {
         _id
         opener
-        skills
-        experience
-        education
+        skills {
+          name
+          proficiency
+        }
+        experience {
+          jobTitle
+          company
+          position
+          startDate
+          endDate
+          jobDescription
+        }
+        education {
+          school
+          degree
+          fieldOfStudy
+          startYear
+          endYear
+        }
       }
     }
   }
