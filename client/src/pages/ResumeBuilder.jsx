@@ -26,7 +26,9 @@ const ResumeInputForm = ({ resume, setResume, onSubmit }) => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+   if (e) {
+      e.preventDefault();
+   }
     onSubmit(resume);
   };
 
@@ -156,6 +158,18 @@ const ResumeInputForm = ({ resume, setResume, onSubmit }) => {
             <Form.Label htmlFor="experience">Experience {index + 1}</Form.Label>
 
             <Form.Group>
+              <Form.Label htmlFor={`jobTitle${index}`}>Job Title</Form.Label>
+              <Form.Control
+                id={`jobTitle${index}`}
+                type="text"
+                placeholder="Enter Job Title"
+                name="jobTitle"
+                value={experience.jobTitle}
+                onChange={(e) => handleExperienceChange(e, index)}
+              />
+            </Form.Group>
+
+            <Form.Group>
               <Form.Label htmlFor={`company${index}`}>Company</Form.Label>
               <Form.Control
                 id={`company${index}`}
@@ -204,12 +218,12 @@ const ResumeInputForm = ({ resume, setResume, onSubmit }) => {
             <Form.Group>
               <Form.Label htmlFor={`descriptions${index}`}>Description</Form.Label>
               <Form.Control
-                id={`description${index}`}
+                id={`jobDescription${index}`}
                 as="textarea"
                 rows={3}
                 placeholder="Describe your experience"
-                name="description"
-                value={experience.description}
+                name="jobDescription"
+                value={experience.jobDescription}
                 onChange={(e) => handleExperienceChange(e, index)}
               />
             </Form.Group>
