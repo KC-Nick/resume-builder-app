@@ -21,6 +21,12 @@ OR
 ![Login Screen](screenshots/project3-3.PNG)
 ![Code Sample](screenshots/project3-4.PNG)
 
+## Repository
+https://github.com/KC-Nick/resume-builder-app
+
+## Live site
+https://mysterious-hamlet-77581-3768235ef0ac.herokuapp.com/
+
 ## Credits
 
 This is the group project by Michael Arrasmith [LINK](https://github.com/MArrasmith), Nicholas Reel [LINK](https://github.com/Steelerforreel), and Nick Wilson [LINK](https://github.com/KC-Nick/). 
