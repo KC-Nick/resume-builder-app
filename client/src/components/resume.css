@@ -1,0 +1,8 @@
+.navbar-container {
+    position: fixed;
+    top: 0;
+    width: auto;
+	margin: 0 0 0 0;
+	padding-bottom: 10%;
+    display: inline-block;
+}

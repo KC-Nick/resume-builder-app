@@ -8,6 +8,7 @@ import ResumeApp from './components/ResumeApp';
 import Home from './pages/Home';
 import client from './utils/apollo.js';
 import jwt_decode from 'jwt-decode';
+import NavBar from './components/NavBar.jsx'
 
 function App() {
   //checks login
@@ -27,6 +28,7 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
+      <NavBar/>
       <div className="flex-column justify-center align-center min-100-vh bg-primary">
         <Routes>
           <Route path="/" element={<LandingPage />} />

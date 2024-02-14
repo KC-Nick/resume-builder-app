@@ -3,6 +3,7 @@ import ResumeInputForm from '../pages/ResumeBuilder';
 import ResumeForm from '../pages/ResumeForm';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import './resume.css';
 
 const ResumeApp = ({ userId }) => {
   console.log("08", userId);
@@ -41,10 +42,12 @@ const ResumeApp = ({ userId }) => {
 
   return (
     <>
-      <ResumeForm resume={resume} setResume={setResume} user={{ userId }} />
+    <div className='resume-footer'>
+      <ResumeForm resume={resume} setResume={setResume} />
       <Button variant="danger" type="button" onClick={handleCancelClick}>
         Cancel
-      </Button>
+      </Button>'
+      </div>'
     </>
   );
 };
